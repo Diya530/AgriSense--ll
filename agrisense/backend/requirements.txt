@@ -1,0 +1,24 @@
+fastapi==0.115.0
+uvicorn[standard]==0.30.6
+pydantic==2.9.2
+pydantic-settings==2.5.2
+requests==2.32.3
+langdetect==1.0.9
+python-multipart==0.0.9
+
+# RAG: local, embedded vector store — a file on disk, not a database service.
+chromadb>=1.5.0
+
+# --- LLM providers (install the ones you plan to use) ---
+google-generativeai==0.8.3   # Gemini (default configured provider)
+openai==1.51.0                # optional alternate/fallback provider
+groq==0.11.0                  # optional alternate/fallback provider
+# Ollama needs no extra package — it's called over HTTP via `requests`.
+
+# --- Testing ---
+pytest==8.3.3
+httpx==0.27.2
+
+# NOTE: no SQLAlchemy, no database driver, no passlib/bcrypt, no python-jose.
+# This backend is stateless by design — see README > Architecture. The
+# farmer profile lives in the browser (localStorage), not the server.

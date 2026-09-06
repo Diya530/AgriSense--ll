@@ -1,0 +1,16 @@
+[
+  {"crop": "Wheat", "variety": "Sharbati", "market": "Bhopal", "state": "Madhya Pradesh", "min_price": 2100, "max_price": 2350, "modal_price": 2250, "msp": 2275, "trend": "up", "date": "2026-07-04"},
+  {"crop": "Rice", "variety": "Common", "market": "Hyderabad", "state": "Telangana", "min_price": 1800, "max_price": 2100, "modal_price": 1950, "msp": 2183, "trend": "stable", "date": "2026-07-04"},
+  {"crop": "Cotton", "variety": "H4", "market": "Nagpur", "state": "Maharashtra", "min_price": 5500, "max_price": 6200, "modal_price": 5850, "msp": 6620, "trend": "down", "date": "2026-07-04"},
+  {"crop": "Soybean", "variety": "Yellow", "market": "Indore", "state": "Madhya Pradesh", "min_price": 3800, "max_price": 4300, "modal_price": 4050, "msp": 4600, "trend": "up", "date": "2026-07-04"},
+  {"crop": "Maize", "variety": "Hybrid", "market": "Davangere", "state": "Karnataka", "min_price": 1650, "max_price": 1950, "modal_price": 1800, "msp": 2090, "trend": "up", "date": "2026-07-04"},
+  {"crop": "Tomato", "variety": "Local", "market": "Nashik", "state": "Maharashtra", "min_price": 800, "max_price": 1500, "modal_price": 1100, "msp": null, "trend": "up", "date": "2026-07-04"},
+  {"crop": "Onion", "variety": "Red", "market": "Lasalgaon", "state": "Maharashtra", "min_price": 600, "max_price": 1200, "modal_price": 900, "msp": null, "trend": "stable", "date": "2026-07-04"},
+  {"crop": "Potato", "variety": "Kufri", "market": "Agra", "state": "Uttar Pradesh", "min_price": 700, "max_price": 1000, "modal_price": 850, "msp": null, "trend": "down", "date": "2026-07-03"},
+  {"crop": "Wheat", "variety": "HD-2967", "market": "Karnal Mandi", "state": "Haryana", "min_price": 2200, "max_price": 2320, "modal_price": 2275, "msp": 2275, "trend": "stable", "date": "2026-07-04"},
+  {"crop": "Wheat", "variety": "HD-2967", "market": "Panchkula Mandi", "state": "Haryana", "min_price": 2180, "max_price": 2300, "modal_price": 2260, "msp": 2275, "trend": "down", "date": "2026-07-03"},
+  {"crop": "Mustard", "variety": "Pusa Bold", "market": "Hisar Mandi", "state": "Haryana", "min_price": 5600, "max_price": 5800, "modal_price": 5720, "msp": 5950, "trend": "up", "date": "2026-07-04"},
+  {"crop": "Chickpea", "variety": "Desi", "market": "Hisar Mandi", "state": "Haryana", "min_price": 5200, "max_price": 5450, "modal_price": 5340, "msp": 5650, "trend": "stable", "date": "2026-07-02"},
+  {"crop": "Groundnut", "variety": "Bold", "market": "Karnal Mandi", "state": "Haryana", "min_price": 5950, "max_price": 6250, "modal_price": 6120, "msp": 6783, "trend": "up", "date": "2026-07-04"},
+  {"crop": "Sugarcane", "variety": "Co-0238", "market": "Karnal Mandi", "state": "Haryana", "min_price": 365, "max_price": 395, "modal_price": 380, "msp": 355, "trend": "up", "date": "2026-07-04"}
+]
