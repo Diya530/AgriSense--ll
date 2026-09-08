@@ -73,7 +73,12 @@ def rebuild_index():
     global _collection
     _collection = client.get_or_create_collection(name="agri_knowledge")
 
-    knowledge_dir = os.path.join(os.path.dirname(__file__), "..", settings.KNOWLEDGE_DIR)
+    # Resolve relative to this file's location, not the process's working
+    # directory, so this works the same locally and on any host regardless
+    # of what directory the server was launched from.
+    _here = os.path.dirname(os.path.abspath(__file__))       # backend/app/rag
+    _backend_dir = os.path.dirname(os.path.dirname(_here))    # backend/
+    knowledge_dir = os.path.normpath(os.path.join(_backend_dir, "..", "data", "knowledge"))
     files = glob.glob(os.path.join(knowledge_dir, "*.md"))
 
     all_chunks, all_ids, all_metas = [], [], []
