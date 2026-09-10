@@ -202,7 +202,7 @@ def send_message(payload: schemas.ChatMessageIn):
 
     # 5. Call the LLM
     try:
-        result = llm.chat(messages, temperature=0.4, max_tokens=900)
+        result = llm.chat(messages, temperature=0.4, max_tokens=1400)
         reply_text = _strip_markdown(result["content"])
     except LLMError as e:
         logger.error(f"LLM chat call failed: {e}")
