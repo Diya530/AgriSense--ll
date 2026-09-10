@@ -87,7 +87,7 @@ def recommend_crops(n: float, p: float, k: float, temperature: float, humidity: 
               "humidity": humidity, "rainfall": rainfall, "ph": ph}
     results = []
     for crop, ranges in CROP_REQUIREMENTS.items():
-        scores = {param: _range_score(inputs[param], *rng) for param, rng in ranges.items()}
+        scores = {param: _range_score(inputs[param], *ranges[param]) for param in inputs}
         overall = sum(scores.values()) / len(scores)
         weak_points = [p for p, s in scores.items() if s < 0.5]
         if overall >= 0.75:
