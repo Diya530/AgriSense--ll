@@ -57,9 +57,13 @@ FARMER PROFILE:
 
 def _strip_markdown(text: str) -> str:
     """Safety net: strip common markdown symbols in case the model uses them
-    despite the system prompt instruction not to."""
+    despite the system prompt instruction not to. Bullet markers ("* item")
+    are converted to plain dashes BEFORE italic-stripping runs — otherwise a
+    bullet's "*" incorrectly pairs with a later "*" and everything between
+    them gets deleted, truncating the reply."""
+    text = re.sub(r"^[ \t]*[\*\+]\s+", "- ", text, flags=re.MULTILINE)
     text = re.sub(r"\*\*(.+?)\*\*", r"\1", text)
-    text = re.sub(r"\*(.+?)\*", r"\1", text)
+    text = re.sub(r"(?<!\*)\*([^\n*]+?)\*(?!\*)", r"\1", text)
     text = re.sub(r"^#{1,6}\s*", "", text, flags=re.MULTILINE)
     return text
 

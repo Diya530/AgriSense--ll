@@ -70,9 +70,19 @@ def on_startup():
 @app.exception_handler(Exception)
 async def unhandled_exception_handler(request: Request, exc: Exception):
     logger.exception("Unhandled error on %s %s", request.method, request.url.path)
+    # Make sure CORS headers are present even on a crash — otherwise the
+    # browser reports a vague "Network Error" instead of showing the real
+    # error message, making bugs much harder to diagnose from the frontend.
+    origin = request.headers.get("origin")
+    allowed = [o.strip() for o in settings.CORS_ORIGINS.split(",")]
+    headers = {}
+    if origin and origin in allowed:
+        headers["Access-Control-Allow-Origin"] = origin
+        headers["Access-Control-Allow-Credentials"] = "true"
     return JSONResponse(
         status_code=500,
         content={"detail": "Something went wrong on our end. Please try again."},
+        headers=headers,
     )
 
 
