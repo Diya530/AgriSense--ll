@@ -1,21 +1,23 @@
 import axios from 'axios'
 
-// Stateless backend: no server-side profile or auth. The farmer profile
-// lives in localStorage (see utils/farmerProfile.js) and is sent as part of
-// request bodies that need it (chat, irrigation).
-//
-// baseURL resolution:
-// - In production, set VITE_API_URL to your deployed backend's full URL
-//   (e.g. https://agrisense-api.onrender.com/api) as a build-time env var.
-// - In local dev, this falls back to '/api', which Vite's dev-server proxy
-//   (see vite.config.js) forwards to localhost:8000.
 const client = axios.create({
   baseURL: import.meta.env.VITE_API_URL || '/api',
+  timeout: 45000, // give a cold Render instance up to 45s to wake up
 })
 
 client.interceptors.response.use(
   (response) => response,
-  (error) => {
+  async (error) => {
+    // If this looks like a cold-start/network-level failure (no response
+    // came back at all) and we haven't retried yet, wait a moment and try
+    // once more — covers the case where the backend was just waking up.
+    const config = error.config
+    if (!error.response && config && !config._retried) {
+      config._retried = true
+      await new Promise((resolve) => setTimeout(resolve, 3000))
+      return client(config)
+    }
+
     const message =
       error.response?.data?.detail ||
       error.message ||
